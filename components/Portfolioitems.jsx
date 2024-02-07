@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function portfolioitems() {
   const contentful = require("contentful");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
 
   useEffect(() => {
     const fetchContentfulEntry = async () => {
@@ -13,11 +13,10 @@ function portfolioitems() {
       });
 
       const posts = await client.getEntries();
-      setData(posts.items[0].fields.title);
+      console.log(posts.items[0].fields.slug)
     };
     fetchContentfulEntry();
   }, []);
-  console.log(data);
 
   return <div>{data}</div>;
 }
