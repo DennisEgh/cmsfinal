@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getPosts } from "@/DB/contentful";
+import { getPostsNav } from "@/DB/contentfulNav";
 import Link from "next/link";
 
-function Portfolio() {
+function Navbar() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ function Portfolio() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const posts = await getPosts();
+        const posts = await getPostsNav();
         setData(posts);
         console.log(posts);
       } catch (error) {
@@ -34,26 +34,19 @@ function Portfolio() {
 
   return (
     <div>
-      <h1>HELLO</h1>
-      <div className="portfolio__item--container">
-        <div className="portfolio__item">
-          {data.items.map((item, index) => (
-            <Link href={`/Portfolio/${item.fields.slug}` } key={index} >
-              <div className="portfolio__item--card"  >
-                <h1>{item.fields.title}</h1>
+         {data.items.map((item, index) => (
+            <Link href={`/Portfolio`} key={index}>
+              <div className="portfolio__item--card" >
+                <h1>{item.fields.portfolio}</h1>
 
-                <img
-                  loading="lazy"
-                  src={item.fields.image.fields.file.url}
-                  alt="leim"
-                ></img>
+                
               </div>
             </Link>
           ))}
-        </div>
-      </div>
+      
+   
     </div>
   );
 }
 
-export default Portfolio;
+export default Navbar;
