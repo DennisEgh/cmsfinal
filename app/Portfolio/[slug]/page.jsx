@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getPosts } from "@/DB/contentful";
+import { getPostsPortfolio } from "../../../DB/contentfulPortfolio";
 
 function Slug({ params }) {
   const [postSlug, setPostSlug] = useState("");
@@ -13,7 +13,7 @@ function Slug({ params }) {
   useEffect(() => {
     const fetchContentfulEntry = async () => {
       try {
-        const posts = await getPosts();
+        const posts = await getPostsPortfolio();
         console.log(posts);
 
         const post = posts.items.find(

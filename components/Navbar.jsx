@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getPostsNav } from "@/DB/contentfulNav";
+import { getPostsNav } from "../DB/contentfulNav";
 import Link from "next/link";
 
 function Navbar() {
@@ -34,14 +34,20 @@ function Navbar() {
 
   return (
     <div>
+            
          {data.items.map((item, index) => (
-            <Link href={`/Portfolio`} key={index}>
+             
+             <Link href={`/${item.fields.portfolio}`} key={index}>
+        
               <div className="portfolio__item--card" >
                 <h1>{item.fields.portfolio}</h1>
 
                 
               </div>
             </Link>
+
+                 
+           
           ))}
       
    

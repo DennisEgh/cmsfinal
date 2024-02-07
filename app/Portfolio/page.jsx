@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getPosts } from "@/DB/contentful";
+import { getPostsPortfolio } from "../../DB/contentfulPortfolio";
 import Link from "next/link";
 
 function Portfolio() {
@@ -11,9 +11,9 @@ function Portfolio() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const posts = await getPosts();
+        const posts = await getPostsPortfolio();
         setData(posts);
-        console.log(posts);
+        
       } catch (error) {
         setError(error);
       } finally {

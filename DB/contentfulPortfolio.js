@@ -7,7 +7,9 @@ const client = contentful.createClient({
 
 async function fetchPosts() {
   try {
-    const entries = await client.getEntries();
+    const entries = await client.getEntries({
+      content_type: "portfolioItems"
+    });
     return entries;
   } catch (error) {
     console.error("Error fetching entries:", error);
@@ -15,7 +17,7 @@ async function fetchPosts() {
   }
 }
 
-export async function getPosts() {
+export async function getPostsPortfolio() {
   const posts = await fetchPosts();
   return posts;
 }
