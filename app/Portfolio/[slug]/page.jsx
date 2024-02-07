@@ -5,14 +5,14 @@ import { getPosts } from "@/DB/contentful";
 
 function Slug({ params }) {
   const [postSlug, setPostSlug] = useState("");
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const router = useRouter();
 
   useEffect(() => {
     const fetchContentfulEntry = async () => {
       try {
-        setLoading(true);
         const posts = await getPosts();
         console.log(posts);
 
@@ -23,10 +23,12 @@ function Slug({ params }) {
         if (post) {
           setPostSlug(post.fields.slug);
         } else {
+          setError(true);
           router.push("/404");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError(true);
         router.push("/404");
       } finally {
         setLoading(false);
@@ -34,6 +36,10 @@ function Slug({ params }) {
     };
     fetchContentfulEntry();
   }, [params.slug, router]);
+
+  if (error) {
+    return
+  }
 
   if (loading) {
     return <div>Loading...</div>;
