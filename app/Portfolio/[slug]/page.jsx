@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { getPostsPortfolio } from "../../../DB/contentfulPortfolio";
 
 function Slug({ params }) {
-  const [postSlug, setPostSlug] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [data, setData] = useState(null);
 
   const router = useRouter();
 
@@ -21,7 +21,8 @@ function Slug({ params }) {
         );
 
         if (post) {
-          setPostSlug(post.fields.slug);
+          console.log(post.fields.image.fields.file.url);
+          setData(post);
         } else {
           setError(true);
           router.push("/404");
@@ -38,7 +39,7 @@ function Slug({ params }) {
   }, [params.slug, router]);
 
   if (error) {
-    return
+    return;
   }
 
   if (loading) {
@@ -46,9 +47,13 @@ function Slug({ params }) {
   }
 
   return (
-    <div>
-      <h1>{params.slug}</h1>
-    </div>
+    <section id="slug">
+      <div className="slug__container">
+        <h1>{data.fields.slug}</h1>
+        <img src={data.fields.image.fields.file.url} alt="" />
+        <p>{data.fields.description}</p>
+      </div>
+    </section>
   );
 }
 

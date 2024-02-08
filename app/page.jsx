@@ -1,35 +1,46 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
+import { getPostsAboutMe } from "../DB/contenfulAboutme";
 
 export default function Home() {
-
-
-  const contentful = require("contentful");
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchContentfulEntry = async () => {
-      const client = contentful.createClient({
-        space: "2nndgunvdm6o",
-        accessToken: "cLblbMbgr3evuaNOcQWUAuKZIpLxr9dGMKNK2rvcYG4",
-      });
-
-      const posts = await client.getEntries();
-    
-      setData(posts.items)
-
+    const fetchPosts = async () => {
+      try {
+        const posts = await getPostsAboutMe();
+        setData(posts);
+        console.log(posts)
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchContentfulEntry();
 
-
+    fetchPosts();
   }, []);
-console.log(data)
 
+  if (loading) {
+    return null;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <section id="landingpage">
-      <h1>h1lo</h1>
+      <div className="landingpage__container">
+
+      <h1>{data.items[3].fields.title}</h1>
+      <p>{data.items[3].fields.description}</p>
+      <img loading="lazy" src={data.items[3].fields.image.fields.file.url} alt="" />
+      
+      </div>
     </section>
   );
 }

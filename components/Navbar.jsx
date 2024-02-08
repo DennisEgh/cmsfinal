@@ -25,7 +25,7 @@ function Navbar() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   if (error) {
@@ -33,25 +33,21 @@ function Navbar() {
   }
 
   return (
-    <div>
-            
-         {data.items.map((item, index) => (
-             
-             <Link href={`/${item.fields.portfolio}`} key={index}>
-        
-              <div className="portfolio__item--card" >
-                <h1>{item.fields.portfolio}</h1>
-
-                
-              </div>
+    <nav>
+      <div className="nav__bar--container">
+        <div className="nav__bar--item">
+          {data.items.map((item, index) => (
+            <Link
+              href={`/${item.fields.portfolio}`}
+              key={index}
+              className="nav__bar--link"
+            >
+              {item.fields.portfolio}
             </Link>
-
-                 
-           
           ))}
-      
-   
-    </div>
+        </div>
+      </div>
+    </nav>
   );
 }
 

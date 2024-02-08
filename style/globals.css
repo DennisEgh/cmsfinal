@@ -30,20 +30,137 @@ a {
   text-decoration: none;
 }
 
-.portfolio__item {
+/* NAVBAR */
+nav {
+  background-color: transparent;
   width: 100%;
-  max-width: 1000px;
-  height: 200px;
+  max-width: 100vw;
+  height: 100px;
+  padding: 20px 40px 20px 40px;
+  background-color: rgb(67, 67, 67);
+  align-items: center;
   display: flex;
-  justify-content: space-between;
 }
-.portfolio__item--container {
-  width: 100vw;
+.nav__bar--container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.nav__bar--link {
+  display: block;
+  color: white;
+}
+.nav__bar--item {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* PORTFOLIO */
+section {
+  height: calc(100vh - 100px);
+  width: 100vw;
+}
+.portfolio__item--container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100%;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.portfolio__item {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  gap: 50px;
+}
+
 img {
   width: 200px;
   height: 200px;
+}
+
+/* SLUG */
+.slug__container {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  gap: 30px;
+}
+
+/* LANDINGPAGE */
+.landingpage__container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* about me */
+.about__me--container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  text-align: center;
+}
+.about__me--items {
+  flex-wrap: wrap;
+  gap: 50px;
+  text-align: center;
+  margin-top: 100px;
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CONTACT PAGE */
+#contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.contact__container {
+  border-top: 4px solid black;
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 50px;
+  
+  
+}
+.contact__items{
+text-align: center;
+  padding: 50px;
+}
+.contact__img{
+  width: 25px;
+  height: 25px;
 }

@@ -13,7 +13,6 @@ function Portfolio() {
       try {
         const posts = await getPostsPortfolio();
         setData(posts);
-        
       } catch (error) {
         setError(error);
       } finally {
@@ -33,13 +32,11 @@ function Portfolio() {
   }
 
   return (
-    <div>
-      <h1>HELLO</h1>
+    <section id="portfolio">
       <div className="portfolio__item--container">
         <div className="portfolio__item">
           {data.items.map((item, index) => (
-            <Link href={`/Portfolio/${item.fields.slug}` } key={index} >
-              <div className="portfolio__item--card"  >
+            <Link href={`/Portfolio/${item.fields.slug}`} key={index}>
                 <h1>{item.fields.title}</h1>
 
                 <img
@@ -47,12 +44,11 @@ function Portfolio() {
                   src={item.fields.image.fields.file.url}
                   alt="leim"
                 ></img>
-              </div>
             </Link>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
