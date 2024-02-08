@@ -45,6 +45,7 @@ export default function Contact() {
       <div className="contact__items">
         <h1>{data.items[0].fields.label}</h1>
         <img className="contact__img" loading="lazy" src={data.items[0].fields.social.fields.file.url} alt="" />
+        <img className="contact__img" loading="lazy" src={data.items[0].fields.social2.fields.file.url} alt="" />
 
       </div>
     </section>

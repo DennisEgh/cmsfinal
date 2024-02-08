@@ -45,6 +45,7 @@ function AboutMe() {
           <div className="about__me--item">
             <h1>{data.items[2].fields.title}</h1>
             <p>{data.items[2].fields.description}</p>
+            <img className="about__me--img" loading="lazy" src={data.items[0].fields.image.fields.file.url} alt="" />
           </div>
         </div>
       </div>

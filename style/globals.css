@@ -115,6 +115,9 @@ img {
 }
 
 /* about me */
+.about__me--img{
+  margin-top: 50px;
+}
 .about__me--container {
   width: 100%;
   max-width: 1500px;
@@ -163,4 +166,4 @@ text-align: center;
 .contact__img{
   width: 25px;
   height: 25px;
-}
+margin: 10px;}
